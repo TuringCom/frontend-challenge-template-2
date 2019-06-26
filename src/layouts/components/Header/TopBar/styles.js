@@ -61,9 +61,17 @@ const styles = theme => ({
     authText: {
         fontWeight: "700",
         fontFamily: 'Montserrat',
-        fontSize: "15px",
-        cursor: "pointer",
-        color: theme.palette.dark
+        fontSize: "16px",
+        //cursor: "pointer",
+        color: theme.palette.darkn,
+      '& span': {
+        color: '#2e2e2e',
+        fontWeight: "700",
+        fontFamily: 'Montserrat'
+      },
+      '& a': {
+        margin: '0 3px'
+      },
     },
     currencyText: {
         fontWeight: "700",
@@ -77,10 +85,13 @@ const styles = theme => ({
     currencyIconContainer: {
         width: "30px"
     },
+    divTopBar: {
+      display: "inline-flex"
+    },
     yourBag: {
         fontWeight: "700",
         fontFamily: 'Montserrat',
-        fontSize: "15px"
+        fontSize: "16px"
     },
     badge: {
         fontWeight: 700,
@@ -105,6 +116,24 @@ const styles = theme => ({
         flexGrow: 1,
         justifyContent: "center",
         paddingRight: "27px"
+    },
+    '@media (max-width: 768px)': {
+      topBar: {
+          display: "block",
+          height: "auto"
+      },
+      toolbar: {
+          display: "block"
+      },
+      divTopBar: {
+        display: "block",
+        width: "100%"
+      },
+      iconContainer: {
+        position: "absolute",
+        top: "13px",
+        right: "10px"
+      }
     }
 });
 

@@ -11,6 +11,7 @@ import {
 import { Link }  from 'react-router-dom';
 import styles from './styles';
 import * as alertActions from "../../../../store/actions/alerts";
+import './style.css';
 
 class NavBar extends React.Component {
 
@@ -22,6 +23,21 @@ class NavBar extends React.Component {
         this.setState({ mobileOpen: !this.state.mobileOpen });
     }
 
+    componentDidMount(){
+      window.addEventListener('scroll', (event) => {
+        const scrollpos = window.scrollY;
+         if(scrollpos > 10){
+           this.setState({
+              activeClass: 'is-scrolled'
+           })
+         }else{
+             this.setState({
+                activeClass: 'is-ontop'
+             })
+         }
+      });
+    }
+
     render() {
 
         const {
@@ -29,11 +45,14 @@ class NavBar extends React.Component {
             brand
         } = this.props;
 
-        const brandComponent = <Link to={'/'} style={{textDecoration: 'none'}}><Button className={classes.brand}>{brand}</Button></Link>;
+        const brandComponent =
+        <Link to={'/'} className={classes.brand}>
+          {brand}
+        </Link>
 
         return (
             <div>
-                <AppBar className={classes.navBar}>
+                <AppBar className={`mainHeaderHolder ${classes.navBar + ' ' + this.state.activeClass}`}>
                     <Toolbar className={classes.toolbar}>
                         <div className={classes.flex}>
                             {brandComponent}
@@ -42,8 +61,7 @@ class NavBar extends React.Component {
                         <div className={`departments categories ${classes.linksContainer}`}>
                             <NavDropdown
                                 title='Regional'
-                                id="basic-nav-dropdown"
-                                className="department"
+                                className="department navDropdown"
                             >
                                 <NavDropdown.Item
                                     onClick={() => {}}
@@ -67,8 +85,7 @@ class NavBar extends React.Component {
                             </NavDropdown>
                             <NavDropdown
                                 title='Nature'
-                                id="basic-nav-dropdown"
-                                className="department"
+                                className="department navDropdown"
                             >
                                 <NavDropdown.Item
                                     onClick={() => {}}
@@ -81,13 +98,12 @@ class NavBar extends React.Component {
                                 >
                                     Flower
                                 </NavDropdown.Item>
-                                    
+
                             </NavDropdown>
 
                             <NavDropdown
                                 title='Seasonal'
-                                id="basic-nav-dropdown"
-                                className="department"
+                                className="department navDropdown"
                             >
                                 <NavDropdown.Item
                                     onClick={() => {}}
@@ -101,7 +117,7 @@ class NavBar extends React.Component {
                                 >
                                     Valentine's
                                 </NavDropdown.Item>
-                                    
+
                             </NavDropdown>
                         </div>
                         </Hidden>
