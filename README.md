@@ -21,6 +21,8 @@ The app uses and advanced redux structure. All Network calls go via redux and re
 
 The UI is based primarily on Material UI. Tailwind CSS is used for grids and responsiveness. Other thatn that, custom styling is used. The theming is quite an advanced structure in itself. The Layout and Theme is selected based on the route. This can be seen in th "layouts" directory in the "src" directory. All Icons are SVG or Font Icons so scaling should not be an issue.
 
+The backend APIs can be found in this link: [API](https://github.com/zandoan/turing-frontend)
+
 
 ## Scripts to Note
 
