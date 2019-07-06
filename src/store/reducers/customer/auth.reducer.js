@@ -1,9 +1,12 @@
-import * as Actions from '../../actions';
+import jwtDecode from 'jwt-decode';
 
+import * as Actions from '../../actions';
+const token = localStorage.getItem('token');
 const initialState = {
-  isLogged: localStorage.getItem('token') ? true : false,
+  isLogged: token ? true : false,
   loading: false,
-  token: localStorage.getItem('token'),
+  token,
+  decoded: token ? jwtDecode(token) : {},
   customer: {},
 };
 
@@ -21,6 +24,7 @@ const auth = function(state = initialState, action) {
         isLogged: true,
         loading: false,
         customer: action.payload.customer,
+        decoded: { user: action.payload.customer.name },
         token: action.payload.accessToken,
       };
     }
@@ -41,6 +45,7 @@ const auth = function(state = initialState, action) {
         ...state,
         isLogged: true,
         loading: false,
+        decoded: { name: action.payload.customer.name },
         customer: action.payload.customer,
         token: action.payload.accessToken,
       };
@@ -57,6 +62,7 @@ const auth = function(state = initialState, action) {
         isLogged: false,
         customer: {},
         token: '',
+        decoded: {},
       };
     }
     default: {

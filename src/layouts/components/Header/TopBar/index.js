@@ -38,7 +38,14 @@ class TopBar extends React.Component {
    * @memberOf TopBar
    */
   render() {
-    const { isLogged, classes, showAuth, showCart, submitLogout } = this.props;
+    const {
+      isLogged,
+      classes,
+      showAuth,
+      showCart,
+      submitLogout,
+      userName,
+    } = this.props;
 
     return (
       <AppBar className={classes.topBar}>
@@ -70,7 +77,9 @@ class TopBar extends React.Component {
             </div>
           ) : (
             <div className={classes.authText + ' ' + classes.divTopBar}>
-              <span>Hi Charles!</span>
+              <span>
+                Hi <span className="capitalize"> {`${userName}`}</span>!
+              </span>
               <Link className={classes.authLink} style={{ color: 'red' }}>
                 My Profile
               </Link>
@@ -151,6 +160,7 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = ({ customer }) => {
   return {
     isLogged: customer.auth.isLogged,
+    userName: customer.auth.decoded.name,
   };
 };
 
