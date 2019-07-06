@@ -55,6 +55,21 @@ class customerService extends EventEmitter {
         });
     });
   };
+
+  facebookLogin = ({ access_token }) => {
+    return new Promise((resolve, reject) => {
+      axios
+        .post(systemConfig.serverBaseUrl + '/customers/facebook', {
+          access_token,
+        })
+        .then(response => {
+          resolve(response.data);
+        })
+        .catch(error => {
+          reject(error.response);
+        });
+    });
+  };
 }
 
 const instance = new customerService();

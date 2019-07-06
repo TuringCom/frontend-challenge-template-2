@@ -75,6 +75,11 @@ class AuthDialog extends Component {
     return submitLogin({ email, password });
   };
 
+  handleFacebookLogin = access_token => {
+    const { submitFacebookLogin } = this.props;
+    return submitFacebookLogin({ access_token });
+  };
+
   handleRegister = () => {
     const { submitRegister } = this.props;
     const { email, name, password } = this.state;
@@ -123,6 +128,7 @@ class AuthDialog extends Component {
               ) : (
                 <LoginForm
                   handleInputChange={this.handleInputChange}
+                  handleFacebookLogin={this.handleFacebookLogin}
                   onSubmit={this.handleLogin}
                   requestLoading={requestLoading}
                 />
@@ -168,6 +174,7 @@ const mapDispatchToProps = dispatch => {
       switchTab: Actions.switchTab,
       submitRegister: customerActions.submitRegister,
       submitLogin: customerActions.submitLogin,
+      submitFacebookLogin: customerActions.submitFacebookLogin,
     },
     dispatch,
   );

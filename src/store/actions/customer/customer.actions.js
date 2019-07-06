@@ -7,6 +7,9 @@ export const LOG_USER_IN_SUCCESS = 'LOG_USER_IN_SUCCESS';
 export const LOG_USER_OUT = 'LOG_USER_OUT';
 export const LOG_USER_OUT_SUCCESS = 'LOG_USER_OUT_SUCCESS';
 export const LOG_USER_OUT_ERROR = 'LOG_USER_OUT_ERROR';
+export const FACEBOOK_LOGIN = 'FACEBOOK_LOGIN';
+export const FACEBOOK_LOGIN_ERROR = 'FACEBOOK_LOGIN_ERROR';
+export const FACEBOOK_LOGIN_SUCCESS = 'FACEBOOK_LOGIN_SUCCESS';
 
 export const submitRegister = data => {
   return {
@@ -22,4 +25,9 @@ export const submitLogin = data => ({
 
 export const submitLogout = () => ({
   type: LOG_USER_OUT,
+});
+
+export const submitFacebookLogin = data => ({
+  type: FACEBOOK_LOGIN,
+  payload: data,
 });

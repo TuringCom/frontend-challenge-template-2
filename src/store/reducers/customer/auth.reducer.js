@@ -65,6 +65,16 @@ const auth = function(state = initialState, action) {
         decoded: {},
       };
     }
+    case Actions.FACEBOOK_LOGIN_SUCCESS: {
+      return {
+        ...state,
+        isLogged: true,
+        loading: false,
+        decoded: { name: action.payload.customer.name },
+        customer: action.payload.customer,
+        token: action.payload.accessToken,
+      };
+    }
     default: {
       return state;
     }

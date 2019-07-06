@@ -3,6 +3,7 @@ import { Button, InputAdornment, withStyles } from '@material-ui/core';
 import EmailIcon from '@material-ui/icons/Email';
 import PasswordIcon from '@material-ui/icons/VpnKey';
 import Formsy from 'formsy-react';
+import FacebookLogin from 'react-facebook-login';
 import PropTypes from 'prop-types';
 import { TextFieldFormsy } from '../../../../components/Formsy';
 import styles from './styles';
@@ -18,6 +19,7 @@ class LoginForm extends Component {
     onSubmit: PropTypes.func.isRequired,
     handleInputChange: PropTypes.func.isRequired,
     requestLoading: PropTypes.bool.isRequired,
+    handleFacebookLogin: PropTypes.func.isRequired,
   };
   form = React.createRef();
 
@@ -27,7 +29,12 @@ class LoginForm extends Component {
    * @memberOf LoginForm
    */
   render() {
-    const { onSubmit, handleInputChange, requestLoading } = this.props;
+    const {
+      onSubmit,
+      handleInputChange,
+      requestLoading,
+      handleFacebookLogin,
+    } = this.props;
     return (
       <div className="w-full flex flex-row justify-center">
         <Formsy
@@ -89,29 +96,17 @@ class LoginForm extends Component {
 
             <div className="socialButtonsHolder">
               <div>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="secondary"
-                  className="w-full btnFacebook"
-                  aria-label="LOG IN"
-                  value="legacy"
-                >
-                  Login with Facebook
-                </Button>
-              </div>
-              <div>
-                <Button
-                  type="submit"
-                  variant="contained"
-                  color="secondary"
-                  className="w-full btnGoogle"
-                  aria-label="LOG IN"
-                  value="legacy"
-                  id="btnGoogle"
-                >
-                  Login with Google
-                </Button>
+                {/*TODO replace with Turing appID */}
+                <FacebookLogin
+                  appId="2124513424515390"
+                  autoLoad={false}
+                  cssClass="w-full btnGoogle MuiButtonBase-root-226 MuiButton-root-200 MuiButton-contained-211 MuiButton-containedPrimary-216 MuiButton-raised-214 MuiButton-raisedPrimary-215"
+                  fields="name,email,picture"
+                  onClick={() => console.log('componentClicked')}
+                  callback={response =>
+                    handleFacebookLogin(response.accessToken)
+                  }
+                />
               </div>
             </div>
           </div>
