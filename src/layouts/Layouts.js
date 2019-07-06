@@ -1,7 +1,7 @@
 import main from './main/Layout';
 
 const Layouts = {
-    main
+  main,
 };
 
 export default Layouts;

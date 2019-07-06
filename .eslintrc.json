@@ -1,0 +1,61 @@
+{
+  "env": {
+    "node": true,
+    "es6": true,
+    "browser": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb",
+    "prettier",
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "prettier/react"
+  ],
+  "rules": {
+    "import/prefer-default-export": 0,
+    "import/newline-after-import": "off",
+    "import/no-dynamic-require": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-autofocus": "off",
+    "jsx-a11y/aria-proptypes": "off",
+    "react/forbid-prop-types": "off",
+    "react/no-array-index-key": "off",
+    "react/no-unescaped-entities": "off",
+    "jsx-a11y/label-has-for": [
+      2,
+      {
+        "required": {
+          "every": ["id"]
+        }
+      }
+    ],
+    "prettier/prettier": [
+      2,
+      {
+        "bracketSpacing": true,
+        "singleQuote": true,
+        "trailingComma": "all"
+      }
+    ],
+    "react/jsx-filename-extension": 0,
+    "react/require-default-props": 0,
+    "require-jsdoc": [
+      "error",
+      {
+        "require": {
+          "FunctionDeclaration": true,
+          "MethodDefinition": true,
+          "ClassDeclaration": true
+        }
+      }
+    ]
+  },
+  "plugins": ["prettier", "react"],
+  "parser": "babel-eslint",
+  "globals": {
+    "appData": true,
+    "analytics": true
+  }
+}

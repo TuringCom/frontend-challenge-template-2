@@ -1,21 +1,21 @@
-
 /* Override Login/Register forms styles */
 
-.buttonsHolder{
+.buttonsHolder {
   display: block;
   width: 100%;
   text-align: center;
 }
 
-.buttonsHolder div{
+.buttonsHolder div {
   margin: 20px 0;
 }
 
-.buttonsHolder button{
+.buttonsHolder button {
   margin-bottom: 5px;
 }
 
-.btnFacebook, .btnGoogle{
+.btnFacebook,
+.btnGoogle {
   text-transform: capitalize;
   min-width: 230px;
 }

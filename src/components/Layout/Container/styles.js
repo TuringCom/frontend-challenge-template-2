@@ -1,8 +1,8 @@
-import {container, desktopOnly} from "../../../styles/variables";
+import { container, desktopOnly } from '../../../styles/variables';
 
 const styles = theme => ({
-    desktopOnly,
-    container
+  desktopOnly,
+  container,
 });
 
 export default styles;
